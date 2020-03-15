@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 class Content extends Component{
+  
     render(){
+      console.log('Content render');
       return(
-       <aticle>
+       <article>
          <h2>{this.props.title}</h2>
-         {this.props.sub}
-       </aticle>
+         {this.props.desc}
+       </article>
       );
     }
   }
