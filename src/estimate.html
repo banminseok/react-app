@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="euc-kr">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>견적서</title>
+    <link rel="stylesheet" href="https://www.stmmall.co.kr/stmnet/res/style/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+        integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous" />
+    <style>
+        * {
+            font-size: 14px;
+            line-height: 20px;
+            box-sizing: border-box;
+        }
+
+        a:link {
+            color: #403324;
+            text-decoration: none
+        }
+
+        a:visited {
+            color: #403324;
+            text-decoration: none
+        }
+
+        a:active {
+            color: #403324;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: #403324;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .main {
+            margin-top: 20px;
+            display: flex;
+            -ms-display: flexbox;
+            display: -webkit-flex;
+            /* Safari */
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+        .main .main__container{
+            position: relative;
+            display: flex;
+            -ms-display: flexbox;
+            display: -webkit-flex;
+            /* Safari */
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            border: 2px solid #000;
+            width: 800px;
+            padding:10px;
+        }
+        .main .estimate__header{
+            margin:30px 0 20px 0;
+            border-bottom: 2px solid #000;
+            width : 100%;
+            height: 50px;
+        }
+        .main .estimate__header-text{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        .main .estimate__summary-container{
+            width : 100%;
+            height: 50px;
+            position: relative;
+            display: flex;
+            -ms-display: flexbox;
+            display: -webkit-flex;
+            /* Safari */
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-box-orient: horizontal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            height: 130px;
+        }
+        .main .estimate__summary-left{
+            width:400px;
+        }
+        .estimate__summary-left .summary{
+            position: relative;
+            display: flex;
+            -ms-display: flexbox;
+            display: -webkit-flex;
+            /* Safari */            
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            margin-bottom:20px;
+        }
+        .estimate__summary-left .summary__title{
+            border:1px solid #000;
+            width: 60px;
+            text-align:center;
+            height:20px;
+            background: #f0f0f0;
+        }
+        .estimate__summary-left .summary__desc{
+            border-bottom : 1px solid #000;
+            width:340px;
+            padding-left:10px;
+            height:20px;
+        }
+        .main .estimate__summary-stmnet{
+            position: relative;
+        }
+        .main .stmnet{
+            position: relative;
+        }
+        .main .stmnet__title{
+            background: #f0f0f0;
+            border:1px solid #000;
+        }
+        .main .stmnet__desc{
+            padding-left:10px;
+            text-align:left;
+            border:1px solid #000;
+        }
+        .main .sign__jin {
+            position: absolute;
+            top: 80px;
+            left: 250px;
+        }
+
+        .main .sign__jin__img {
+            width: 50px;
+        }
+
+        .main .prod-table{
+            margin-top : 20px
+        }
+        caption {
+            caption-side: top;
+            text-align: right;
+        }
+        .main .prod-title{
+            border:1px solid #000;
+            text-align: center;
+            height:20px;
+            background: #f0f0f0;
+        }
+        .main .prod-text{
+            border:1px solid #000;
+            height:20px;
+            padding:0 5px 0 5px;
+        }
+        .main .t-center{
+            text-align: center;
+        }
+        .main .t-right{
+            text-align: right;
+        }
+        .main .prod-sumtxt{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border:1px solid #000;
+            background: #f0f0f0;
+        }
+        .main .prod-sumprice{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border:1px solid #000;
+            background: #f0f0f0;
+        }    
+        .main .comp__title{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-align: center;
+            margin:20px;
+        }    
+        span.nbsp {
+            display: inline-block;
+            width: 20px;
+            background: #f0f0f0;
+        }
+
+        .nav {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .nav .nav__btn {
+            width: auto;
+            height: 28px;
+            padding: 2px 20px;
+            border: 1px solid #000;
+            border-radius: 16px;
+            color: #000;
+            line-height: 28px;
+            font-size: 0.8 rem;
+            font-weight: 700;
+            transition: all .2s;
+            background-color: #fff;
+        }
+
+        .nav .nav__btn:hover {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<main class="main">
+    <div class="main__container estimate">
+        <div class="estimate__header">
+            <div class="estimate__header-logo"></div>
+            <div class="estimate__header-text">견<span class="nbsp"></span>적<span class="nbsp"></span>서</div>
+        </div>
+        <div class="estimate__summary-container">
+            <div class="estimate__summary-left">
+                <ul class="summary">
+                    <li class="summary__title">NO</li>
+                    <li class="summary__desc">ddddddddd</li>
+                </ul>
+                <ul class="summary">
+                    <li class="summary__title">견적일</li>
+                    <li class="summary__desc">2020년 2월 21일
+                    </li>
+                </ul>
+                <ul class="summary">
+                    <li class="summary__title">수신인</li>
+                    <li class="summary__desc">0000님 貴下
+                    </li>
+                </ul>
+                <p>아래와 같이 견적드립니다.
+                </p>
+            </div>
+            <div class="estimate__summary-stmnet">
+                <table class="stmnet">
+                    <colgroup>
+                        <col style="width:120px;">
+                        <col style="width:200px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th class="stmnet__title">상 호</th>
+                            <td class="stmnet__desc">(주)에스티엠넷</td>
+                        </tr>
+                        <tr>
+                            <th class="stmnet__title">사 업 자 번 호
+                            </th>
+                            <td class="stmnet__desc"> 107-81-74457	
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="stmnet__title">사 업 장 주 소
+                            </th>
+                            <td class="stmnet__desc">서울시 서초구 사평대로 371</td>
+                        </tr>
+                        <tr>
+                            <th class="stmnet__title">대 표 자 성 명
+                            </th>
+                            <td class="stmnet__desc"> 서 효 식	
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="stmnet__title">담    당    자
+                            </th>
+                            <td class="stmnet__desc"> 안세준 차장	
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="stmnet__title">전  화  번  호
+                            </th>
+                            <td class="stmnet__desc"> (02)3485-0812	
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="sign__jin">
+                    <img src="https://www.stmmall.co.kr/images/common/stmnet_jin.gif" class='sign__jin__img'>
+                </div>
+            </div>
+        </div> 
+        <table class="prod-table">
+            <caption>[단위:원,VAT포함]</caption>
+            <colgroup>
+                <col style="width:50px;">
+                <col style="width:380px;">
+                <col style="width:50px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+                <col style="width:100px;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="prod-title">NO</th>
+                    <th class="prod-title">품명</th>
+                    <th class="prod-title">수량</th>
+                    <th class="prod-title">공급가액</th>
+                    <th class="prod-title">거래금액</th>
+                    <th class="prod-title">비고</th>
+                </tr>
+               
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="prod-text t-center">1</td>
+                    <td class="prod-text"> 리얼3D 필터 교체형 면 마스크 + 부직포 여과 필터 15매 
+                    </td>
+                    <td class="prod-text t-right">1</td>
+                    <td class="prod-text t-right"> 5,070 
+                    </td>
+                    <td class="prod-text t-right"> 5,070 
+                    </td>
+                    <td class="prod-text"></td>
+                </tr>
+                <tr>
+                    <td class="prod-text t-center">2</td>
+                    <td class="prod-text"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right">   </td>
+                    <td class="prod-text"></td>
+                </tr>
+                <tr>
+                    <td class="prod-text t-center">3</td>
+                    <td class="prod-text"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right">   </td>
+                    <td class="prod-text"></td>
+                </tr>
+                <tr>
+                    <td class="prod-text t-center">4</td>
+                    <td class="prod-text"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right"></td>
+                    <td class="prod-text t-right">   </td>
+                    <td class="prod-text"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="prod-sumtxt">총합계</td>
+                    <td class="prod-sumprice">5,07870</td>
+                    <td class="prod-title"></td>
+                </tr>
+            </tbody>
+        </table>     
+        <div class="comp__title">
+            (주)<span class="nbsp"></span>에
+            <span class="nbsp"></span>스
+            <span class="nbsp"></span>티
+            <span class="nbsp"></span>엠
+            <span class="nbsp"></span>넷
+        </div>  
+    </div>
+</main>
+<nav class="nav">
+    <a href="javascript:window.print();" class="nav__btn">인쇄</a>
+    <a href="" id="btnClose" class="nav__btn">닫기</a>
+</nav>
+</body>
+</html>
